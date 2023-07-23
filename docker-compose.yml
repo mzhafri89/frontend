@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  front-end:
+    build: 
+      - context: . #path to custom docker file
+      - dockerfile: Dockerfile.dev
+    image: mzhafri89/front-end
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules #tell docker to not reference this volume
+      - .:/app #reference /app folder in container to the current folder in host
+    restart: 'always'
